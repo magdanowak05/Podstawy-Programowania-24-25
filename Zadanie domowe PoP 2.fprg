@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Zadanie domowe PoP 2"/>
+        <attribute name="authors" value="admin"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-04-12 03:56:13 PM"/>
+        <attribute name="created" value="YWRtaW47TEFQVE9QLVZNTTI2MUpGOzIwMjUtMDQtMTI7MDM6MzI6MzkgUE07Mjg0Nw=="/>
+        <attribute name="edited" value="YWRtaW47TEFQVE9QLVZNTTI2MUpGOzIwMjUtMDQtMTI7MDM6NTY6MTMgUE07NjsyOTU4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="typLiczby" type="Integer" array="False" size=""/>
+            <output expression="&quot;Liczby maj&#261; by&#263; ca&#322;kowite (1) czy zmiennoprzecinkowe (2)?&quot;" newline="True"/>
+            <input variable="typLiczby"/>
+            <if expression="typLiczby == 1">
+                <then>
+                    <declare name="x" type="Integer" array="False" size=""/>
+                    <output expression="&quot;Podaj liczb&#281; x: &quot;" newline="True"/>
+                    <input variable="x"/>
+                    <declare name="y" type="Integer" array="False" size=""/>
+                    <output expression="&quot;Podaj liczb&#281; y: &quot;" newline="True"/>
+                    <input variable="y"/>
+                    <if expression="x%y == 0">
+                        <then>
+                            <output expression="&quot;Liczba x dzieli si&#281; przez liczb&#281; y&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Liczba x nie dzieli si&#281; przez liczb&#281; y&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <declare name="x" type="Real" array="False" size=""/>
+                    <output expression="&quot;Podaj liczb&#281; x: &quot;" newline="True"/>
+                    <input variable="x"/>
+                    <declare name="y" type="Real" array="False" size=""/>
+                    <output expression="&quot;Podaj liczb&#281; y: &quot;" newline="True"/>
+                    <input variable="y"/>
+                    <if expression="x%y == 0">
+                        <then>
+                            <output expression="&quot;Liczba x dzieli si&#281; przez liczb&#281; y&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Liczba x nie dzieli si&#281; przez liczb&#281; y&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
