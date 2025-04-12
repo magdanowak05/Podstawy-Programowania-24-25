@@ -30,7 +30,6 @@ int main()
         scanf("%f", &x);
         printf("Podaj liczbę Y: ");
         scanf("%f", &y);
-        printf("Liczby zostały zaokrąglone do dwóch miejsc po przecinku.\n");
         if (fmod(x, y) == 0)
         {
             printf("Liczba %.2f dzieli się przez liczbę %.2f", x, y);
