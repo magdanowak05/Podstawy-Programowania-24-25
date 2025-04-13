@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Zadanie domowe PoP 1"/>
+        <attribute name="authors" value="admin"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-04-13 04:12:02 PM"/>
+        <attribute name="created" value="YWRtaW47TEFQVE9QLVZNTTI2MUpGOzIwMjUtMDQtMDk7MDc6MDk6MjUgUE07Mjg1Ng=="/>
+        <attribute name="edited" value="YWRtaW47TEFQVE9QLVZNTTI2MUpGOzIwMjUtMDQtMTM7MDQ6MTI6MDIgUE07NTsyOTQ5"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="tab" type="Integer" array="True" size="10"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="suma" type="Real" array="False" size=""/>
+            <assign variable="suma" expression="0"/>
+            <declare name="iloczyn" type="Real" array="False" size=""/>
+            <assign variable="iloczyn" expression="1.0"/>
+            <for variable="i" start="0" end="9" direction="inc" step="1">
+                <assign variable="tab[i]" expression="random(10)"/>
+                <assign variable="suma" expression="suma + tab[i]"/>
+                <assign variable="iloczyn" expression="iloczyn * tab[i]"/>
+            </for>
+            <declare name="sredniaArytmetyczna" type="Real" array="False" size=""/>
+            <assign variable="sredniaArytmetyczna" expression="suma/10"/>
+            <declare name="sredniaGeometryczna" type="Real" array="False" size=""/>
+            <assign variable="sredniaGeometryczna" expression="(iloczyn)^(1.0/10.0)"/>
+            <if expression="iloczyn == 0 || iloczyn&lt;0">
+                <then>
+                    <output expression="&quot;&#346;rednia arytmetyczna wynosi: &quot;&amp;sredniaArytmetyczna" newline="True"/>
+                    <output expression="&quot;Nie mo&#380;na obliczy&#263; &#347;redniej geometrycznej - w tablicy jest element 0/iloczyn jest ujemny&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;&#346;rednia arytmetyczna wynosi:&quot;&amp;sredniaArytmetyczna" newline="True"/>
+                    <output expression="&quot;&#346;rednia geometryczna wynosi:&quot;&amp;sredniaGeometryczna" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
