@@ -1,54 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int main() {
-    int i;
     int x;
-    printf("Podaj nieujemną liczbę całkowitą: ");
-    scanf("%d", &x); //wczytujemy wartość x do programu
+    int rozmiarINT;
+    rozmiarINT = sizeof(int);
+    printf("Podaj x (nieujemna liczba calkowita/integer): ");
+    scanf("%d", &x);
 
-    if (x < 0)
-    {
-        printf("Wpisana liczba ujemna.\n");
-        return -1; //return -1 zwraca to, że program należy przerwać, nie można użyć break, bo nie jest to pętla for/while
+    if (x < rozmiarINT) {
+        printf("Brak miejsca na minimum jeden element integer.\n");
+        return -1; //zwraca -1, co oznacza, ze program nalezy przerwac (nie mozna uzyc break, bo nie jest to petla for/while
     }
 
-    int *tab1 = (int*) malloc(x * sizeof(int));
-    int *tab2 = (int*) malloc(x * sizeof(int));
-    printf("Alokacja miejsca na tablice 1 oraz 2.\n"); //alokowanie miejsca na tablice - rozmiar w bajtach*liczba int podana do konsoli
+    // Alokacja x bajt�w - dane zebrane w obszarach pamieci
+    int *obsz1 = (int*) malloc(x);
+    int *obsz2 = (int*) malloc(x);
 
-    if (tab1 == NULL || tab2 == NULL)
-    {
+    if (obsz1 == NULL || obsz2 == NULL) {
         printf("Niepoprawna alokacja.\n");
-        return -1; //w przypadku błędu alokacji - również zwrócenie, żeby przerwano program
-    }
-//tworzenie tablic
-    for (i = 0; i < x; i++)
-    {
-        *(tab1 + i) = i * 10;
+        return -1;
     }
 
-    for (i = 0; i < x; i++)
-    {
-        *(tab2 + i) = *(tab1 + (x - 1 - i)); //odwrócenie kolejności liczb z tablicy 1
-    }
-//wyświetlanie tablic
-    printf("Tablica 1:\n");
-    for (i = 0; i < x; i++)
-    {
-        printf("%d ", *(tab1 + i));
+    int n;
+    n = x / sizeof(int); // liczba integer�w, kt�re sie mieszcza w x bajtach
+    printf("Alokowano miejsce na %d element/y/ow typu integer.\n", n);
+
+    // Wypelnianie obszaru 1 kolejnymi potegami liczby 2 (lacznie i poteg)
+    for (int i = 0; i < n; i++) {
+        *(obsz1 + i) = (long double)pow(2, i);
     }
 
-    printf("\nTablica 2:\n");
-    for (i = 0; i < x; i++)
-    {
-        printf("%d ", *(tab2 + i));
+    // Obszar 2, czyli obszar 1 w odwrotnej kolejnosci
+    for (int i = 0; i < n; i++) {
+        *(obsz2 + i) = *(obsz1 + (n - 1 - i));
     }
 
-//uwalnianie pamięci
-    free(tab1);
-    free(tab2);
-    printf("\nUwalniam miejsce.");
+    // Wy�wietlanie tego, co znajduje sie w obu obszarach pamieci
+    printf("Obszar 1:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", *(obsz1 + i));
+    }
+
+    printf("\nObszar 2:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", *(obsz2 + i));
+    }
+
+    // Zwolnienie pami�ci
+    free(obsz1);
+    free(obsz2);
+    printf("\nUwalniam miejsce.\n");
+
     return 0;
 }
 
