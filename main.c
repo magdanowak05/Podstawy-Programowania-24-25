@@ -14,7 +14,7 @@ int main() {
         return -1; //zwraca -1, co oznacza, ze program nalezy przerwac (nie mozna uzyc break, bo nie jest to petla for/while
     }
 
-    // Alokacja x bajt體 - dane zebrane w obszarach pamieci
+    // Alokacja x bajt贸w - dane zebrane w obszarach pamieci
     int *obsz1 = (int*) malloc(x);
     int *obsz2 = (int*) malloc(x);
 
@@ -24,7 +24,7 @@ int main() {
     }
 
     int n;
-    n = x / sizeof(int); // liczba integer體, kt髍e sie mieszcza w x bajtach
+    n = x / sizeof(int); // liczba integer贸w, kt贸re sie mieszcza w x bajtach
     printf("Alokowano miejsce na %d element/y/ow typu integer.\n", n);
 
     // Wypelnianie obszaru 1 kolejnymi potegami liczby 2 (lacznie i poteg)
@@ -37,7 +37,7 @@ int main() {
         *(obsz2 + i) = *(obsz1 + (n - 1 - i));
     }
 
-    // Wy渨ietlanie tego, co znajduje sie w obu obszarach pamieci
+    // Wy艣wietlanie tego, co znajduje sie w obu obszarach pamieci
     printf("Obszar 1:\n");
     for (int i = 0; i < n; i++) {
         printf("%d ", *(obsz1 + i));
@@ -48,11 +48,13 @@ int main() {
         printf("%d ", *(obsz2 + i));
     }
 
-    // Zwolnienie pami阠i
+    // Zwolnienie pami臋ci
     free(obsz1);
     free(obsz2);
     printf("\nUwalniam miejsce.\n");
 
     return 0;
 }
-
+/* po sprawdzeniu - Prawid艂owe formatowanie, weryfikacja wprowadzonej liczby, weryfikacji wyniku
+funkcji malloc. Tylko to rzutowanie! De facto podw贸jne! Z double na long double
+(realnie to ten sam typ), a potem do int. Tak si臋 nie robi :-) */
