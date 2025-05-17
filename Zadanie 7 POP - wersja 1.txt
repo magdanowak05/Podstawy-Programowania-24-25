@@ -2,39 +2,55 @@
 #include <algorithm>
 #include <cmath>
 
+using namespace std;
+
 mojapaletka::mojapaletka(int szerokosc, int pozycja, int maxwychylenie) :paletka(szerokosc, pozycja, maxwychylenie) {}
 
 bool mojapaletka::krok() {
     if (obiektX < 0 || obiektY < 0)
+        {
         return false;
+        }
 
     int srodek = pobierzPozycje();
     int polowa = szerokosc / 2;
     int lewy = srodek - polowa;
     int prawy = srodek + polowa;
 
-    int odlegloscDoObiektuLewo = std::abs(obiektX - lewy);
-    int odlegloscDoObiektuPrawo = std::abs(obiektX - prawy);
+    int odlegloscDoObiektuLewo = abs(obiektX - lewy);
+    int odlegloscDoObiektuPrawo = abs(obiektX - prawy);
 
-    if (odlegloscDoObiektuLewo <= 4 || odlegloscDoObiektuPrawo <= 4) {
-        if (obiektX < srodek) {
+    if (odlegloscDoObiektuLewo <= 4 || odlegloscDoObiektuPrawo <= 4)
+        {
+        if (obiektX < srodek)
+            {
             pozycja -= 1;
             pozycja = std::max(0, std::min(pozycja, maxwychylenie));
             return true;
-        } else if (obiektX > srodek) {
+            }
+        else if (obiektX > srodek)
+        {
             pozycja += 1;
             pozycja = std::max(0, std::min(pozycja, maxwychylenie));
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
 
     if (prawy > maxwychylenie)
+    {
         kierunek = -1;
+    }
     else if (lewy <= 0)
+    {
         kierunek = 1;
-    pozycja += kierunek;
-    pozycja = std::max(0, std::min(pozycja, maxwychylenie));
+    }
+
+    pozycja = pozycja + kierunek;
+    pozycja = max(0, min(pozycja, maxwychylenie));
+    
     return true;
 }
